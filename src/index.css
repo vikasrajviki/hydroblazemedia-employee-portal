@@ -1,0 +1,452 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* HydroBlaze Premium Design System */
+
+@layer base {
+  :root {
+    /* Core brand colors - From logo */
+    --hydro: 197 100% 45%;
+    --hydro-glow: 197 100% 55%;
+    --blaze: 16 100% 50%;
+    --blaze-glow: 12 100% 55%;
+    
+    /* Premium dark theme */
+    --background: 220 25% 4%;
+    --background-elevated: 220 20% 7%;
+    --foreground: 210 40% 98%;
+    
+    --card: 220 20% 6%;
+    --card-foreground: 210 40% 98%;
+    
+    --popover: 220 20% 6%;
+    --popover-foreground: 210 40% 98%;
+    
+    --primary: 197 100% 45%;
+    --primary-foreground: 220 25% 4%;
+    
+    --secondary: 16 100% 50%;
+    --secondary-foreground: 220 25% 4%;
+    
+    --muted: 220 15% 15%;
+    --muted-foreground: 215 20% 55%;
+    
+    --accent: 220 15% 12%;
+    --accent-foreground: 210 40% 98%;
+    
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+    
+    --border: 220 15% 15%;
+    --input: 220 15% 15%;
+    --ring: 197 100% 45%;
+    
+    --radius: 1rem;
+    
+    /* Typography */
+    --font-display: 'Space Grotesk', system-ui, sans-serif;
+    --font-body: 'Inter', system-ui, sans-serif;
+    
+    /* Gradients */
+    --gradient-hydro-blaze: linear-gradient(135deg, hsl(var(--hydro)) 0%, hsl(0 0% 100%) 50%, hsl(var(--blaze)) 100%);
+    --gradient-hydro: linear-gradient(135deg, hsl(var(--hydro)) 0%, hsl(var(--hydro-glow)) 100%);
+    --gradient-blaze: linear-gradient(135deg, hsl(var(--blaze)) 0%, hsl(var(--blaze-glow)) 100%);
+    --gradient-surface: linear-gradient(180deg, hsl(220 20% 8%) 0%, hsl(220 20% 4%) 100%);
+    
+    /* Shadows */
+    --shadow-hydro: 0 0 60px -15px hsl(var(--hydro) / 0.5);
+    --shadow-blaze: 0 0 60px -15px hsl(var(--blaze) / 0.5);
+    --shadow-card: 0 25px 50px -12px hsl(0 0% 0% / 0.5);
+    --shadow-glow: 0 0 40px -10px hsl(var(--hydro) / 0.3), 0 0 40px -10px hsl(var(--blaze) / 0.3);
+  }
+
+  .light {
+    /* Premium light theme — warm off-white with cool depth */
+    --hydro: 197 100% 48%;
+    --hydro-glow: 197 100% 58%;
+    --blaze: 14 100% 55%;
+    --blaze-glow: 12 100% 62%;
+
+    --background: 220 30% 98%;
+    --background-elevated: 0 0% 100%;
+    --foreground: 222 47% 9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 9%;
+
+    --primary: 197 100% 48%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 14 100% 55%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 220 22% 93%;
+    /* Darker, cooler muted text for crisp paragraph contrast (~7:1 on bg) */
+    --muted-foreground: 220 22% 28%;
+
+    --accent: 220 22% 95%;
+    --accent-foreground: 222 47% 9%;
+
+    --destructive: 0 84% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 22% 82%;
+    --input: 220 20% 86%;
+    --ring: 197 100% 48%;
+
+    --gradient-hydro-blaze: linear-gradient(135deg, hsl(197 100% 48%) 0%, hsl(222 45% 18%) 50%, hsl(14 100% 55%) 100%);
+    --gradient-hydro: linear-gradient(135deg, hsl(197 100% 48%) 0%, hsl(197 100% 58%) 100%);
+    --gradient-blaze: linear-gradient(135deg, hsl(14 100% 55%) 0%, hsl(12 100% 62%) 100%);
+    --gradient-surface: linear-gradient(180deg, hsl(220 28% 98%) 0%, hsl(0 0% 100%) 100%);
+    --shadow-card:
+      0 1px 2px -1px hsl(222 45% 11% / 0.05),
+      0 6px 20px -10px hsl(222 45% 11% / 0.08),
+      0 20px 44px -22px hsl(197 60% 30% / 0.07);
+    --shadow-hydro: 0 12px 40px -16px hsl(var(--hydro) / 0.25);
+    --shadow-blaze: 0 12px 40px -16px hsl(var(--blaze) / 0.25);
+    --shadow-glow:
+      0 0 30px -8px hsl(var(--hydro) / 0.15),
+      0 0 40px -10px hsl(var(--blaze) / 0.12);
+  }
+
+  .dark {
+    --background: 220 25% 4%;
+    --foreground: 210 40% 98%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: var(--font-body);
+    overflow-x: hidden;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+  }
+}
+
+@layer components {
+  /* Gradient text */
+  .text-gradient {
+    background: var(--gradient-hydro-blaze);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer 4s linear infinite;
+  }
+  
+  .text-gradient-hydro {
+    background: var(--gradient-hydro);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  .text-gradient-blaze {
+    background: var(--gradient-blaze);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  /* Glassmorphism */
+  .glass {
+    @apply backdrop-blur-xl border border-border;
+    background: hsl(var(--card));
+  }
+  
+  .glass-card {
+    @apply backdrop-blur-xl border border-border rounded-2xl;
+    background: hsl(var(--card));
+    box-shadow: var(--shadow-card);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .glass-card:hover {
+    border-color: hsl(var(--hydro) / 0.3);
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-card), 0 0 20px -8px hsl(var(--hydro) / 0.15);
+  }
+  
+  /* Premium button styles */
+  .btn-primary {
+    @apply relative px-8 py-4 rounded-full font-display font-semibold text-foreground;
+    @apply border border-border bg-card/80 backdrop-blur-sm;
+    @apply overflow-hidden transition-all duration-400;
+  }
+  
+  .btn-primary::before {
+    content: '';
+    @apply absolute inset-0 opacity-0 transition-opacity duration-400;
+    background: var(--gradient-hydro-blaze);
+    background-size: 200% 100%;
+    animation: shimmer 3s linear infinite;
+  }
+  
+  .btn-primary:hover::before {
+    @apply opacity-100;
+  }
+  
+  .btn-primary:hover {
+    @apply border-transparent scale-105;
+  }
+  
+  .btn-primary span {
+    @apply relative z-10;
+  }
+  
+  /* Label badge */
+  .badge-glow {
+    @apply inline-block px-4 py-2 rounded-full text-xs uppercase tracking-widest;
+    @apply border border-hydro/30 bg-hydro/5 text-hydro backdrop-blur-sm;
+  }
+  
+  /* Section line */
+  .section-line {
+    @apply flex-1 h-px ml-10 opacity-30;
+    background: linear-gradient(90deg, hsl(var(--hydro)), transparent);
+  }
+  
+  /* Noise overlay */
+  .noise-overlay {
+    @apply fixed inset-0 pointer-events-none z-50 opacity-[0.03];
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  }
+}
+
+/* Light mode overrides for elements using foreground opacity borders/backgrounds */
+.light .noise-overlay {
+  @apply opacity-[0.012];
+}
+
+/* Refined light-mode shading for premium look */
+.light [class*="border-foreground/5"] {
+  border-color: hsl(220 22% 88%) !important;
+}
+.light [class*="border-foreground/10"] {
+  border-color: hsl(220 22% 82%) !important;
+}
+.light [class*="border-foreground/20"] {
+  border-color: hsl(220 22% 72%) !important;
+}
+.light [class*="border-foreground/[0.06]"],
+.light [class*="border-foreground/[0.1]"] {
+  border-color: hsl(220 22% 84%) !important;
+}
+
+/* Premium card backgrounds — soft elevation, subtle tint */
+.light [class*="bg-card/50"],
+.light [class*="bg-card/95"] {
+  background-color: hsl(0 0% 100%) !important;
+  background-image: linear-gradient(180deg, hsl(220 30% 99.5%) 0%, hsl(0 0% 100%) 100%) !important;
+  border-color: hsl(220 22% 86%) !important;
+  box-shadow:
+    0 1px 0 0 hsl(0 0% 100%) inset,
+    0 1px 2px -1px hsl(222 45% 11% / 0.04),
+    0 6px 20px -12px hsl(222 45% 11% / 0.08) !important;
+}
+
+.light [class*="bg-card/50"]:hover,
+.light [class*="bg-card/95"]:hover {
+  border-color: hsl(220 22% 78%) !important;
+  box-shadow:
+    0 1px 0 0 hsl(0 0% 100%) inset,
+    0 1px 2px -1px hsl(222 45% 11% / 0.06),
+    0 14px 36px -18px hsl(197 70% 30% / 0.16),
+    0 28px 56px -28px hsl(14 80% 40% / 0.10) !important;
+}
+
+/* Translucent backgrounds */
+.light [class*="bg-background/50"],
+.light [class*="bg-background/90"] {
+  background-color: hsl(220 30% 98% / 0.92) !important;
+}
+
+/* Navbar — frosted glass with subtle depth */
+.light nav {
+  background: hsl(0 0% 100% / 0.78) !important;
+  border-color: hsl(220 20% 86%) !important;
+  box-shadow:
+    0 1px 0 0 hsl(220 30% 100% / 0.6) inset,
+    0 4px 24px -8px hsl(222 45% 11% / 0.10) !important;
+}
+
+/* Service comparison & misc white-tint utilities */
+.light [class*="bg-white/5"],
+.light [class*="bg-white/\\[0.02\\]"] {
+  background-color: hsl(220 24% 96%) !important;
+}
+.light [class*="border-white/5"],
+.light [class*="border-white/10"],
+.light [class*="border-white/\\[0.08\\]"],
+.light [class*="border-white/\\[0.15\\]"] {
+  border-color: hsl(220 20% 84%) !important;
+}
+
+/* Brand-tint accents — visible on light */
+.light [class*="bg-hydro/5"] { background-color: hsl(var(--hydro) / 0.08) !important; }
+.light [class*="bg-hydro/10"] { background-color: hsl(var(--hydro) / 0.12) !important; }
+.light [class*="bg-blaze/5"] { background-color: hsl(var(--blaze) / 0.08) !important; }
+.light [class*="bg-blaze/10"] { background-color: hsl(var(--blaze) / 0.12) !important; }
+.light [class*="border-hydro/20"] { border-color: hsl(var(--hydro) / 0.32) !important; }
+.light [class*="border-blaze/20"] { border-color: hsl(var(--blaze) / 0.32) !important; }
+.light [class*="border-hydro/30"] { border-color: hsl(var(--hydro) / 0.42) !important; }
+.light [class*="border-blaze/30"] { border-color: hsl(var(--blaze) / 0.42) !important; }
+
+/* ── WCAG AA accessible brand text in light mode ──
+   Keeps vibrant hydro/blaze for surfaces (gradients, orbs, buttons),
+   but darkens text usage to meet 4.5:1 contrast on white backgrounds.
+   Audited values: hydro 32% L → 4.91:1, blaze 42% L → 4.63:1. */
+.light .text-hydro { color: hsl(197 100% 32%) !important; }
+.light .text-blaze { color: hsl(14 100% 38%) !important; }
+.light .text-gradient-hydro {
+  background: linear-gradient(135deg, hsl(197 100% 32%) 0%, hsl(197 100% 38%) 100%) !important;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.light .text-gradient-blaze {
+  background: linear-gradient(135deg, hsl(14 100% 38%) 0%, hsl(12 100% 44%) 100%) !important;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ── Unified section dividers ──
+   Replace fractional foreground borders with a luminous hairline that
+   reads as a soft gradient seam between sections. */
+.light section[class*="border-t"],
+.light section[class*="border-y"] {
+  border-top-color: transparent !important;
+  position: relative;
+}
+.light section[class*="border-t"]::before,
+.light section[class*="border-y"]::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 8%;
+  right: 8%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    hsl(220 22% 78%) 20%,
+    hsl(197 60% 50% / 0.35) 50%,
+    hsl(220 22% 78%) 80%,
+    transparent 100%
+  );
+  pointer-events: none;
+}
+.light section[class*="border-y"]::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 8%;
+  right: 8%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    hsl(220 22% 78%) 20%,
+    hsl(14 60% 50% / 0.30) 50%,
+    hsl(220 22% 78%) 80%,
+    transparent 100%
+  );
+  pointer-events: none;
+}
+
+/* ── Alternating section tints for subtle elevation rhythm ──
+   Only applied when a parent .home-sections wrapper is used. */
+.light .home-sections > section:nth-of-type(even) {
+  background:
+    radial-gradient(ellipse at top, hsl(197 60% 96%) 0%, transparent 60%),
+    hsl(220 30% 98%);
+}
+.light .home-sections > section:nth-of-type(odd) {
+  background:
+    radial-gradient(ellipse at bottom, hsl(14 60% 97%) 0%, transparent 55%),
+    hsl(0 0% 100%);
+}
+
+@layer utilities {
+  .font-display {
+    font-family: var(--font-display);
+  }
+  
+  .font-body {
+    font-family: var(--font-body);
+  }
+}
+
+/* Animations */
+@keyframes shimmer {
+  0% { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { 
+    box-shadow: 0 0 20px hsl(var(--hydro) / 0.3), 0 0 40px hsl(var(--blaze) / 0.2);
+  }
+  50% { 
+    box-shadow: 0 0 40px hsl(var(--hydro) / 0.5), 0 0 60px hsl(var(--blaze) / 0.3);
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.animate-scale-in {
+  animation: scale-in 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.animation-delay-100 { animation-delay: 0.1s; }
+.animation-delay-200 { animation-delay: 0.2s; }
+.animation-delay-300 { animation-delay: 0.3s; }
+.animation-delay-400 { animation-delay: 0.4s; }
+.animation-delay-500 { animation-delay: 0.5s; }
+.animation-delay-600 { animation-delay: 0.6s; }

@@ -1,0 +1,75 @@
+{
+  "version": 1,
+  "sdk_version": "0.20.0",
+  "path": "/functions/v1/mcp",
+  "auth": {
+    "type": "none"
+  },
+  "mcp": {
+    "server": {
+      "name": "hydroblaze-mcp",
+      "version": "0.1.0",
+      "title": "HydroBlaze MCP"
+    },
+    "tools": [
+      {
+        "name": "list_services",
+        "title": "List HydroBlaze services",
+        "description": "Return the list of marketing services HydroBlaze offers with taglines and what each includes.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {}
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "get_pricing",
+        "title": "Get HydroBlaze pricing",
+        "description": "Return HydroBlaze pricing tiers. Optionally filter to a single tier by id (starter, growth, premium).",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "tier": {
+              "description": "Optional tier id to return only that pricing tier.",
+              "type": "string",
+              "enum": [
+                "starter",
+                "growth",
+                "premium"
+              ]
+            }
+          }
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "get_contact_info",
+        "title": "Get HydroBlaze contact info",
+        "description": "Return the ways to get in touch with HydroBlaze, including the lead form URL and social links.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {}
+        },
+        "outputSchema": null
+      }
+    ]
+  }
+}
