@@ -5,7 +5,6 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { ContactDialogProvider } from "@/components/ContactFormDialog";
 import Pricing from "./pages/Pricing";
-import Blog from "./pages/Blog";
 import NotFound from "./pages/NotFound";
 import { PortalAuthProvider } from "@/portal/PortalAuthContext";
 import PortalLayout from "@/portal/PortalLayout";
@@ -37,7 +36,6 @@ const App = () => (
               <Route index element={<PortalDashboard />} />
               <Route path="tasks" element={<PortalTasks />} />
               <Route path="pricing" element={<Pricing />} />
-              <Route path="blog" element={<Blog />} />
               <Route path="announcements" element={<PortalAnnouncements />} />
               <Route path="documents" element={<PortalDocuments />} />
               <Route path="team" element={<PortalTeam />} />

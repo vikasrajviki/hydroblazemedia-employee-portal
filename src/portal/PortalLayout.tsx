@@ -1,5 +1,5 @@
 import { NavLink, Outlet, useNavigate, Navigate, Link } from "react-router-dom";
-import { LayoutDashboard, CheckSquare, Megaphone, FileText, Users, LogOut, UserCircle2, CreditCard, Newspaper } from "lucide-react";
+import { LayoutDashboard, CheckSquare, Megaphone, FileText, Users, LogOut, UserCircle2, CreditCard } from "lucide-react";
 import { usePortalAuth } from "./PortalAuthContext";
 import { Button } from "@/components/ui/button";
 import UserAvatar from "./UserAvatar";
@@ -13,7 +13,6 @@ const navItems = [
   { to: "/portal/documents", label: "Documents", icon: FileText },
   { to: "/portal/team", label: "Team", icon: Users },
   { to: "/portal/pricing", label: "Pricing", icon: CreditCard },
-  { to: "/portal/blog", label: "Blog", icon: Newspaper },
 ];
 
 const roleLabel: Record<string, string> = {
