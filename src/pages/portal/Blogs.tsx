@@ -88,7 +88,7 @@ const Blogs = () => {
     load();
   };
   const setStatusOf = async (b: Blog, next: Blog["status"]) => {
-    const patch: Record<string, unknown> = { status: next };
+    const patch: { status: Blog["status"]; published_at?: string } = { status: next };
     if (next === "published" && !b.published_at) patch.published_at = new Date().toISOString();
     const { error } = await supabase.from("blogs").update(patch).eq("id", b.id);
     if (error) return toast.error(error.message);
