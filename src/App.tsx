@@ -2,16 +2,9 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { ContactDialogProvider } from "@/components/ContactFormDialog";
-import Index from "./pages/Index";
-import Services from "./pages/Services";
-import About from "./pages/About";
 import Pricing from "./pages/Pricing";
-
-import Blog from "./pages/Blog";
-import Portfolio from "./pages/Portfolio";
-import PrivacyPolicy from "./pages/PrivacyPolicy";
 import NotFound from "./pages/NotFound";
 import { PortalAuthProvider } from "@/portal/PortalAuthContext";
 import PortalLayout from "@/portal/PortalLayout";
@@ -36,13 +29,7 @@ const App = () => (
         <ContactDialogProvider>
           <PortalAuthProvider>
           <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/services" element={<Services />} />
-            <Route path="/about" element={<About />} />
-            
-            <Route path="/portfolio" element={<Portfolio />} />
-            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-            <Route path="/blog" element={<Blog />} />
+            <Route path="/" element={<Navigate to="/portal" replace />} />
             <Route path="/portal/login" element={<PortalLogin />} />
             <Route path="/portal/accept-invite" element={<AcceptInvite />} />
             <Route path="/portal" element={<PortalLayout />}>
