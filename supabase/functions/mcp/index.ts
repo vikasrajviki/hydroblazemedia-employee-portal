@@ -3,7 +3,7 @@
 // supabase function: mcp
 // Bundled from src/lib/mcp/index.ts by @lovable.dev/mcp-js.
 // src/lib/mcp/index.ts
-import { defineMcp } from "npm:@lovable.dev/mcp-js@0.20.0";
+import { auth, defineMcp } from "npm:@lovable.dev/mcp-js@0.20.0";
 
 // src/lib/mcp/tools/list-services.ts
 import { defineTool } from "npm:@lovable.dev/mcp-js@0.20.0";
@@ -119,11 +119,16 @@ var contact_info_default = defineTool3({
 });
 
 // src/lib/mcp/index.ts
+var projectRef = "xtdemrqoeraogjwwfses";
 var mcp_default = defineMcp({
   name: "hydroblaze-mcp",
   title: "HydroBlaze MCP",
   version: "0.1.0",
   instructions: "Public information about HydroBlaze, a performance-marketing agency. Use `list_services` to see offerings, `get_pricing` for tier details, and `get_contact_info` for how prospects can reach the team.",
+  auth: auth.oauth.issuer({
+    issuer: `https://${projectRef}.supabase.co/auth/v1`,
+    acceptedAudiences: "authenticated"
+  }),
   tools: [list_services_default, get_pricing_default, contact_info_default]
 });
 
