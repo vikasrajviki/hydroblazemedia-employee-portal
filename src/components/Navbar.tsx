@@ -10,7 +10,6 @@ import ThemeToggle, { useTheme } from '@/components/ThemeToggle';
 const navLinks = [
   { path: '/services', label: 'Services' },
   { path: '/portfolio', label: 'Portfolio' },
-  { path: '/pricing', label: 'Pricing' },
   { path: '/about', label: 'About' },
   { path: '/blog', label: 'Blog' },
 ];
