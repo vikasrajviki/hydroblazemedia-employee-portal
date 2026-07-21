@@ -119,7 +119,7 @@ var contact_info_default = defineTool3({
 });
 
 // src/lib/mcp/index.ts
-var projectRef = "xtdemrqoeraogjwwfses";
+var projectRef = "vgmigotqusnsmclsxlly";
 var mcp_default = defineMcp({
   name: "hydroblaze-mcp",
   title: "HydroBlaze MCP",
