@@ -17,6 +17,8 @@ import PortalDocuments from "./pages/portal/Documents";
 import PortalAdmin from "./pages/portal/Admin";
 import PortalProfile from "./pages/portal/Profile";
 import PortalTeam from "./pages/portal/Team";
+import PortalBlogs from "./pages/portal/Blogs";
+import PortalBlogEditor from "./pages/portal/BlogEditor";
 
 const queryClient = new QueryClient();
 
@@ -36,6 +38,9 @@ const App = () => (
               <Route index element={<PortalDashboard />} />
               <Route path="tasks" element={<PortalTasks />} />
               <Route path="pricing" element={<Pricing />} />
+              <Route path="blogs" element={<PortalBlogs />} />
+              <Route path="blogs/new" element={<PortalBlogEditor />} />
+              <Route path="blogs/:id/edit" element={<PortalBlogEditor />} />
               <Route path="announcements" element={<PortalAnnouncements />} />
               <Route path="documents" element={<PortalDocuments />} />
               <Route path="team" element={<PortalTeam />} />
