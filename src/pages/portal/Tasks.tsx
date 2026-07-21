@@ -21,8 +21,8 @@ interface Task {
   checklist_total: number; checklist_done: number; updated_at?: string;
 }
 interface Profile { id: string; email: string; full_name: string | null; }
-interface Attachment { id: string; task_id: string; storage_path: string; file_name: string; size_bytes: number | null; uploaded_by: string | null; created_at: string; }
-interface Comment { id: string; task_id: string; author_id: string; body: string; created_at: string; }
+interface Attachment { id: string; task_id: string; storage_path: string; name: string; size_bytes: number | null; uploaded_by: string | null; created_at: string; }
+interface Comment { id: string; task_id: string; created_by: string | null; body: string; created_at: string; }
 interface ChecklistItem { id: string; task_id: string; title: string; completed: boolean; created_by: string | null; created_at: string; }
 
 const STATUSES = [
@@ -181,7 +181,7 @@ const Tasks = () => {
     const { error: upErr } = await supabase.storage.from("documents").upload(path, file);
     if (upErr) return toast.error(upErr.message);
     const { error } = await supabase.from("task_attachments").insert({
-      task_id: detail.id, storage_path: path, file_name: file.name,
+      task_id: detail.id, storage_path: path, name: file.name,
       mime_type: file.type, size_bytes: file.size, uploaded_by: user!.id,
     });
     if (error) return toast.error(error.message);
@@ -204,7 +204,7 @@ const Tasks = () => {
   const postComment = async () => {
     if (!detail || !newComment.trim()) return;
     const { error } = await supabase.from("task_comments").insert({
-      task_id: detail.id, author_id: user!.id, body: newComment.trim(),
+      task_id: detail.id, created_by: user!.id, body: newComment.trim(),
     });
     if (error) return toast.error(error.message);
     await notifyAssignee(detail, detail.assignee_id, "task_updated");
