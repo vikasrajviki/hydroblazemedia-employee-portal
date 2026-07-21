@@ -6,8 +6,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ContactDialogProvider } from "@/components/ContactFormDialog";
 import Index from "./pages/Index";
 import Services from "./pages/Services";
-import Pricing from "./pages/Pricing";
 import About from "./pages/About";
+import Pricing from "./pages/Pricing";
 
 import Blog from "./pages/Blog";
 import Portfolio from "./pages/Portfolio";
@@ -38,7 +38,6 @@ const App = () => (
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/services" element={<Services />} />
-            <Route path="/pricing" element={<Pricing />} />
             <Route path="/about" element={<About />} />
             
             <Route path="/portfolio" element={<Portfolio />} />
@@ -49,6 +48,7 @@ const App = () => (
             <Route path="/portal" element={<PortalLayout />}>
               <Route index element={<PortalDashboard />} />
               <Route path="tasks" element={<PortalTasks />} />
+              <Route path="pricing" element={<Pricing />} />
               <Route path="announcements" element={<PortalAnnouncements />} />
               <Route path="documents" element={<PortalDocuments />} />
               <Route path="team" element={<PortalTeam />} />
