@@ -357,7 +357,7 @@ const Tasks = () => {
                   {attachments.length === 0 && <p className="text-xs text-muted-foreground">No attachments.</p>}
                   {attachments.map((a) => (
                     <div key={a.id} className="flex items-center gap-2 p-2 rounded-lg border border-foreground/10 text-sm">
-                      <span className="flex-1 truncate">{a.file_name}</span>
+                      <span className="flex-1 truncate">{a.name}</span>
                       <span className="text-xs text-muted-foreground">{a.size_bytes ? `${(a.size_bytes/1024).toFixed(1)} KB` : ""}</span>
                       <Button variant="ghost" size="icon" onClick={() => downloadAttachment(a)}><Download className="w-4 h-4" /></Button>
                       {(a.uploaded_by === user?.id || isAdmin) && (
@@ -379,7 +379,7 @@ const Tasks = () => {
                   {comments.map((c) => (
                     <div key={c.id} className="text-sm p-3 rounded-lg bg-foreground/5">
                       <div className="flex items-center justify-between mb-1">
-                        <span className="font-medium text-xs">{nameFor(c.author_id)}</span>
+                        <span className="font-medium text-xs">{nameFor(c.created_by)}</span>
                         <span className="text-[10px] text-muted-foreground">{new Date(c.created_at).toLocaleString()}</span>
                       </div>
                       <p className="whitespace-pre-wrap">{c.body}</p>
